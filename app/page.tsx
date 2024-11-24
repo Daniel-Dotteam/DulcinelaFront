@@ -26,9 +26,9 @@ export default function Home() {
     )
   }
 
-  // if (!session) {
-  //   return null
-  // }
+  if (!session) {
+    return null
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-green-900 to-red-900 relative">

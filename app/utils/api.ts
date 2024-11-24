@@ -1,7 +1,9 @@
 import { getSession } from 'next-auth/react'
 
-export async function fetchWithAuth(url: string, options: RequestInit = {}) {
+export async function fetchWithAuth(endpoint: string, options: RequestInit = {}) {
   const session = await getSession()
+  
+  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}${endpoint}`
   
   const headers = {
     'Content-Type': 'application/json',
