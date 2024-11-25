@@ -28,7 +28,7 @@ const Header = () => {
 
     return (
         <header className="bg-white text-black py-4 px-6 shadow-lg sticky top-0 z-50">
-            <div className="container mx-auto flex justify-between items-center">
+            <div className="container mx-auto flex justify-center sm:justify-between items-center flex-col sm:flex-row">
                 <div className="flex items-center gap-4">
                     <Logo02 size={120} />
                 </div>
@@ -72,7 +72,7 @@ const Header = () => {
                     </button>
 
                     {isProfileOpen && (
-                        <div className="absolute top-full right-0 mt-2 w-72 bg-white/90 backdrop-blur-sm rounded-lg shadow-xl z-50 text-gray-800 border border-white/20">
+                        <div className="absolute top-full right-[-20%] sm:right-0 mt-2 w-72 bg-white/90 backdrop-blur-sm rounded-lg shadow-xl z-50 text-gray-800 border border-white/20">
                             <div className="p-4 bg-[#d04a53] rounded-t-lg">
                                 <h3 className="font-bold text-lg text-white">{t('profile.title')}</h3>
                                 <p className="text-sm text-[#bce3de]">{t('profile.subtitle')}</p>

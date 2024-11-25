@@ -46,7 +46,7 @@ export default function Home() {
         <div>
           <h2 
             className="text-4xl font-extrabold text-center"
-            style={{ color: colors.green.dark }}
+            style={{ color: '#FEBA00' }}
           >
             {t('title')}
           </h2>
