@@ -2,14 +2,26 @@
 
 import { useSession, signOut } from 'next-auth/react'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useLocale } from 'next-intl'
 import Logo02 from './Logo02'
 
 const Header = () => {
     const { data: session } = useSession()
     const [isProfileOpen, setIsProfileOpen] = useState(false)
+    const router = useRouter()
+    const locale = useLocale()
 
     const handleLogout = async () => {
         await signOut({ redirect: true, callbackUrl: '/login' })
+    }
+
+    const handleLanguageChange = (newLocale: string) => {
+        const currentPath = window.location.pathname
+        const segments = currentPath.split('/')
+        segments[1] = newLocale  // Replace the locale segment
+        const newPath = segments.join('/')
+        router.replace(newPath, { scroll: false })
     }
 
     return (
@@ -17,11 +29,19 @@ const Header = () => {
             <div className="container mx-auto flex justify-between items-center">
                 <div className="flex items-center gap-4">
                     <Logo02 size={100} />
-                    {/* <h1 className="text-3xl font-bold font-[family-name:var(--font-geist-sans)]">
-                        Dulcinela
-                    </h1> */}
                 </div>
                 <div className="flex items-center gap-4">
+                    <select
+                        value={locale}
+                        onChange={(e) => handleLanguageChange(e.target.value)}
+                        className="bg-white/80 border border-gray-300 rounded-lg px-3 py-1.5 text-sm 
+                            focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent
+                            transition-all duration-300"
+                    >
+                        <option value="ro">Romana</option>
+                        <option value="ru">Rusa</option>
+                    </select>
+
                     <button
                         onClick={() => setIsProfileOpen(!isProfileOpen)}
                         className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors"
