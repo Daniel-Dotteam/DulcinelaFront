@@ -69,7 +69,7 @@ export default function Register({ params: { locale } }: { params: { locale: str
     <>
       <AuthHeader />
     
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#bce3de] to-[#faedcb] relative overflow-hidden p-4 sm:p-10">
+    <div className="min-h-screen relative flex items-center justify-center bg-gradient-to-b from-[#bce3de] to-[#faedcb] overflow-hidden p-4 sm:p-10">
       <Snowfall />
       
       <div className="max-w-md w-full space-y-8 p-4 sm:p-8 bg-white/90 backdrop-blur-sm rounded-lg shadow-2xl border border-white/20">

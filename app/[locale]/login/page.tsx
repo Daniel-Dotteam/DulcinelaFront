@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { signIn } from 'next-auth/react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
@@ -23,6 +23,7 @@ import './style.css'
 
 
 export default function Login({ params: { locale } }: { params: { locale: string } }) {
+  const headerRef = useRef<HTMLDivElement>(null);
   const router = useRouter()
   const searchParams = useSearchParams()
   const [error, setError] = useState<string | null>(null)
@@ -61,9 +62,11 @@ export default function Login({ params: { locale } }: { params: { locale: string
   });
 
   return (
-    <>
-      <AuthHeader />
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#bce3de] to-[#faedcb] relative overflow-hidden p-4 sm:p-10">
+    <div className="flex flex-col h-screen">
+      <div ref={headerRef}>
+        <AuthHeader />
+      </div>
+      <div className={`flex-1 flex items-center justify-center bg-gradient-to-b from-[#bce3de] to-[#faedcb] relative overflow-hidden p-4 sm:p-10`}>
         <Snowfall />
         
         <div className="max-w-md w-full space-y-8 p-8 bg-white/90 backdrop-blur-sm rounded-lg shadow-2xl border border-white/20">
@@ -177,6 +180,6 @@ export default function Login({ params: { locale } }: { params: { locale: string
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }
