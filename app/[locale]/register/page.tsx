@@ -226,7 +226,7 @@ export default function Register({ params: { locale } }: { params: { locale: str
             <button
               type="submit"
               disabled={formik.isSubmitting}
-              className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white transition-all duration-300 bg-[${colors.green.light}] hover:bg-[${colors.red.main}]`}
+              className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white transition-all duration-300 bg-[#327a71] hover:bg-[#d04a53]`}
             >
               {formik.isSubmitting ? t('buttons.registering') : t('buttons.register')}
             </button>

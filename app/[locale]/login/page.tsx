@@ -18,6 +18,10 @@ const initialValues = {
   password: ''
 }
 
+import './style.css'
+
+
+
 export default function Login({ params: { locale } }: { params: { locale: string } }) {
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -126,7 +130,7 @@ export default function Login({ params: { locale } }: { params: { locale: string
               <button
                 type="submit"
                 disabled={formik.isSubmitting}
-                className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white transition-all duration-300 bg-[${colors.green.light}] hover:bg-[${colors.red.main}] ${formik.isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white transition-all duration-300 bg-[#327a71] hover:bg-[${colors.red.main}] ${formik.isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 {formik.isSubmitting ? t('buttons.loggingIn') : t('buttons.login')}
               </button>
@@ -162,11 +166,10 @@ export default function Login({ params: { locale } }: { params: { locale: string
               </p>
               <button
                 onClick={() => setShowSuccessModal(false)}
-                className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 sm:text-sm transition-opacity duration-200"
-                style={{ 
-                  backgroundColor: colors.green.main,
-                  borderColor: colors.green.dark
-                }}
+                className="w-full inline-flex justify-center rounded-md border
+                 border-transparent shadow-sm px-4 py-2 text-base font-medium
+                  text-white hover:opacity-90 focus:outline-none focus:ring-2 
+                  focus:ring-offset-2 sm:text-sm transition-opacity duration-200 button_login hover:bg-[#d04a53]"
               >
                 {t('registrationSuccess.continue')}
               </button>
