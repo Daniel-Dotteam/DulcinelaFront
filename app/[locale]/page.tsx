@@ -8,6 +8,7 @@ import Footer from '../components/Footer'
 import AdventCalendar from '../components/AdventCalendar'
 import Snowfall from '../components/Snowfall'
 import { useTranslations } from 'next-intl'
+import { colors } from '../utils/theme'
 
 export default function Home() {
   const { data: session, status } = useSession()
@@ -24,8 +25,10 @@ export default function Home() {
 
   if (status === 'loading') {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-green-900 to-red-900">
-        <div className="text-lg text-white">Loading...</div>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#bce3de] to-[#faedcb] relative overflow-hidden">
+        <div className="text-lg font-medium" style={{ color: colors.text.primary }}>
+          Loading...
+        </div>
       </div>
     )
   }
@@ -35,15 +38,22 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-green-900 to-red-900 relative">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#bce3de] to-[#faedcb] relative">
       <Snowfall />
       <Header />
 
       <main className="flex-grow container mx-auto px-4 py-8 relative z-10">
-        <h2 className="text-4xl font-bold text-center mb-8 text-white">
-          {t('title')}
-        </h2>
-        <AdventCalendar />
+        <div>
+          <h2 
+            className="text-4xl font-extrabold text-center"
+            style={{ color: colors.green.dark }}
+          >
+            {t('title')}
+          </h2>
+          <div className="relative z-10">
+            <AdventCalendar />
+          </div>
+        </div>
       </main>
 
       <Footer />

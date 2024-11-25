@@ -7,7 +7,7 @@ const createValidationSchema = (t: (key: string) => string) => {
 
   return Yup.object({
     name: Yup.string()
-      .min(10, t('validation.nameMin'))
+      .min(2, t('validation.nameMin'))
       .max(32, t('validation.nameMax'))
       .required(t('validation.nameRequired')),
       

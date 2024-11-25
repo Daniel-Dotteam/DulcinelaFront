@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Snowfall from '../../components/Snowfall'
 import Logo02 from '../../components/Logo02'
-import AuthHeader from '../../components/Header'
+import AuthHeader from '../../components/AuthHeader'
 
 import { DatePicker } from 'rsuite'
 import 'rsuite/dist/rsuite-no-reset.min.css';
@@ -14,6 +14,7 @@ import { useFormik } from 'formik'
 
 import createValidationSchema from '../../schema/form1.schema';
 import {useTranslations} from 'next-intl';
+import { colors } from '../../utils/theme'
 
 const initialValues = {
   name: "",
@@ -52,7 +53,8 @@ export default function Register({ params: { locale } }: { params: { locale: str
         })
 
         if (res.ok) {
-          router.push('/login')
+          setError(null)
+          router.push(`/${locale}/login?registered=true`)
         } else {
           const data = await res.json()
           setError(data.message || t('errors.registrationFailed'))
@@ -75,14 +77,19 @@ export default function Register({ params: { locale } }: { params: { locale: str
           <div className="flex justify-center">
             <Logo02 size={100} />
           </div>
-          <h2 className="text-3xl font-extrabold text-green-800">
+          <h2 className="text-3xl font-extrabold" style={{ color: colors.green.dark }}>
             {t('title')}
           </h2>
-          <p className="text-red-700">{t('subtitle')}</p>
+          <p style={{ color: colors.red.main }}>{t('subtitle')}</p>
         </div>
 
         {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+          <div className="border rounded px-4 py-3" 
+            style={{ 
+              backgroundColor: `${colors.red.light}20`, 
+              borderColor: colors.red.main,
+              color: colors.red.main 
+            }}>
             {error}
           </div>
         )}
@@ -96,14 +103,16 @@ export default function Register({ params: { locale } }: { params: { locale: str
                 type="text"
                 className={`appearance-none rounded-lg relative block w-full px-3 py-2 border ${
                   formik.touched.name && formik.errors.name 
-                    ? 'border-red-500' 
+                    ? `border-[${colors.red.main}]` 
                     : 'border-gray-300'
-                } placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-green-500 focus:border-green-500`}
+                } placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[${colors.green.main}] focus:border-[${colors.green.main}]`}
                 placeholder={t('formFields.firstName')}
                 {...formik.getFieldProps('name')}
               />
               {formik.touched.name && formik.errors.name && (
-                <div className="text-red-500 text-sm mt-1">{formik.errors.name}</div>
+                <div style={{ color: colors.red.main }} className="text-sm mt-1">
+                  {formik.errors.name}
+                </div>
               )}
             </div>
             <div>
@@ -202,14 +211,14 @@ export default function Register({ params: { locale } }: { params: { locale: str
                   href="https://dulcinella.md/ro/termenii-si-conditiile"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-green-600 hover:text-green-800 underline"
+                  className={`text-[${colors.green.main}] hover:text-[${colors.green.dark}] underline`}
                 >
                   {t('formFields.termsLink')}
                 </a>
               </label>
             </div>
             {formik.touched.marketingConsent && formik.errors.marketingConsent && (
-              <div className="text-red-500 text-sm mt-1">{formik.errors.marketingConsent}</div>
+              <div className="text-[#d04a53] text-sm mt-1">{formik.errors.marketingConsent}</div>
             )}
           </div>
 
@@ -217,7 +226,7 @@ export default function Register({ params: { locale } }: { params: { locale: str
             <button
               type="submit"
               disabled={formik.isSubmitting}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-r from-[#d04a53] to-[#bce3de] hover:from-[#d04a53] hover:to-[#bce3de] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-300"
+              className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white transition-all duration-300 bg-[${colors.green.light}] hover:bg-[${colors.red.main}]`}
             >
               {formik.isSubmitting ? t('buttons.registering') : t('buttons.register')}
             </button>
@@ -225,7 +234,10 @@ export default function Register({ params: { locale } }: { params: { locale: str
         </form>
 
         <div className="text-center">
-          <Link href={`/${locale}/login`} className="text-red-700 hover:text-green-700 transition-colors duration-300">
+          <Link 
+            href={`/${locale}/login`} 
+            className={`text-[${colors.red.main}] hover:text-[${colors.green.main}]`}
+          >
             {t('loginLink')}
           </Link>
         </div>
