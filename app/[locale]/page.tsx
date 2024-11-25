@@ -10,6 +10,7 @@ import Snowfall from '../components/Snowfall'
 import { useTranslations } from 'next-intl'
 import { colors } from '../utils/theme'
 
+
 export default function Home() {
   const { data: session, status } = useSession()
   const router = useRouter()
