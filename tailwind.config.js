@@ -13,6 +13,10 @@ module.exports = {
       perspective: {
         '1000': '1000px',
       },
+      colors: {
+        button: "#d76269",
+        foreground: "var(--foreground)",
+      },
     },
   },
   plugins: [
