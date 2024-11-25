@@ -42,7 +42,6 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#bce3de] to-[#faedcb] relative">
       <Snowfall />
       <Header />
-
       <main className="flex-grow container mx-auto px-4 py-8 relative z-10">
         <div>
           <h2 
