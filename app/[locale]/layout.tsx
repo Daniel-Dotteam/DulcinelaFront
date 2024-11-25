@@ -66,6 +66,8 @@ export default async function RootLayout({
             gtag('config', 'G-3W5LXKB8CM');
           `}
         </Script>
+
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* Google Tag Manager (noscript) */}
