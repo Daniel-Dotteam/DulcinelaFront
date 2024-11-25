@@ -57,9 +57,30 @@
     "errors": {
       "invalidCredentials": "Неверный email или пароль",
       "generalError": "Произошла ошибка при входе"
+    },
+    "validation": {
+      "emailInvalid": "Неверный адрес электронной почты",
+      "emailRequired": "Электронная почта обязательна",
+      "passwordRequired": "Пароль обязателен"
+    },
+    "registrationSuccess": {
+      "title": "Регистрация успешна!",
+      "message": "Спасибо за создание аккаунта. Теперь вы можете войти, используя свои данные.",
+      "continue": "Перейти к входу"
     }
   },
   "HomePage": {
     "title": "Календарь Адвента"
+  },
+  "Header": {
+    "account": "Аккаунт",
+    "profile": {
+      "title": "Профиль",
+      "subtitle": "Управление аккаунтом",
+      "name": "Имя",
+      "email": "Email",
+      "lastName": "Фамилия",
+      "logout": "Выйти"
+    }
   }
 }

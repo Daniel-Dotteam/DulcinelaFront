@@ -2,14 +2,16 @@
 
 import { useState } from 'react'
 import { signIn } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import Snowfall from '../../components/Snowfall'
 import Logo02 from '../../components/Logo02'
 import { useFormik } from 'formik'
-import LoginSchema from '../../schema/login.schema'
+import createLoginSchema from '../../schema/login.schema'
 import { useTranslations } from 'next-intl'
 import AuthHeader from '../../components/AuthHeader'
+import { colors } from '../../utils/theme'
+import { useEffect } from 'react'
 
 const initialValues = {
   email: '',
@@ -18,12 +20,20 @@ const initialValues = {
 
 export default function Login({ params: { locale } }: { params: { locale: string } }) {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [error, setError] = useState<string | null>(null)
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
   const t = useTranslations('LoginPage');
+
+  useEffect(() => {
+    if (searchParams.get('registered') === 'true') {
+      setShowSuccessModal(true)
+    }
+  }, [searchParams])
 
   const formik = useFormik({
     initialValues,
-    validationSchema: LoginSchema,
+    validationSchema: createLoginSchema((key: string) => t(key)),
     onSubmit: async (values, { setSubmitting }) => {
       try {
         const result = await signIn('credentials', {
@@ -49,7 +59,7 @@ export default function Login({ params: { locale } }: { params: { locale: string
   return (
     <>
       <AuthHeader />
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-green-900 to-red-900 relative overflow-hidden p-4 sm:p-10">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#bce3de] to-[#faedcb] relative overflow-hidden p-4 sm:p-10">
         <Snowfall />
         
         <div className="max-w-md w-full space-y-8 p-8 bg-white/90 backdrop-blur-sm rounded-lg shadow-2xl border border-white/20">
@@ -57,14 +67,19 @@ export default function Login({ params: { locale } }: { params: { locale: string
             <div className="flex justify-center">
               <Logo02 size={100} />
             </div>
-            <h2 className="text-3xl font-extrabold text-green-800">
+            <h2 className="text-3xl font-extrabold" style={{ color: colors.green.dark }}>
               {t('title')}
             </h2>
-            <p className="text-red-700">{t('subtitle')}</p>
+            <p style={{ color: colors.red.main }}>{t('subtitle')}</p>
           </div>
           
           {error && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+            <div className="border rounded px-4 py-3" 
+              style={{ 
+                backgroundColor: `${colors.red.light}20`, 
+                borderColor: colors.red.main,
+                color: colors.red.main 
+              }}>
               {error === 'CredentialsSignin' ? t('errors.invalidCredentials') : t('errors.generalError')}
             </div>
           )}
@@ -111,7 +126,7 @@ export default function Login({ params: { locale } }: { params: { locale: string
               <button
                 type="submit"
                 disabled={formik.isSubmitting}
-                className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-r from-red-600 to-green-600 hover:from-red-700 hover:to-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-300 ${formik.isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white transition-all duration-300 bg-[${colors.green.light}] hover:bg-[${colors.red.main}] ${formik.isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 {formik.isSubmitting ? t('buttons.loggingIn') : t('buttons.login')}
               </button>
@@ -119,12 +134,46 @@ export default function Login({ params: { locale } }: { params: { locale: string
           </form>
 
           <div className="text-center">
-            <Link href={`/${locale}/register`} className="text-red-700 hover:text-green-700 transition-colors duration-300">
+            <Link 
+              href={`/${locale}/register`} 
+              className={`text-[${colors.red.main}] hover:text-[${colors.green.main}]`}
+            >
               {t('registerLink')}
             </Link>
           </div>
         </div>
       </div>
+      
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-xl max-w-sm mx-4">
+            <div className="text-center">
+              <div className="mb-4" style={{ color: colors.green.main }}>
+                <svg className="mx-auto h-12 w-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-medium mb-2" style={{ color: colors.text.primary }}>
+                {t('registrationSuccess.title')}
+              </h3>
+              <p className="text-sm mb-4" style={{ color: colors.text.secondary }}>
+                {t('registrationSuccess.message')}
+              </p>
+              <button
+                onClick={() => setShowSuccessModal(false)}
+                className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 sm:text-sm transition-opacity duration-200"
+                style={{ 
+                  backgroundColor: colors.green.main,
+                  borderColor: colors.green.dark
+                }}
+              >
+                {t('registrationSuccess.continue')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }

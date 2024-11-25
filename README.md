@@ -39,5 +39,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 colors:
 red: #d04a53
-blue: #bce3de
+green_light: #bce3de
+green_dark: #b7e1dd
 yellor: #faedcb

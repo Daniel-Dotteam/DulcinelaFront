@@ -57,10 +57,30 @@
     "errors": {
       "invalidCredentials": "Email sau parolă invalidă",
       "generalError": "A apărut o eroare în timpul conectării"
+    },
+    "validation": {
+      "emailInvalid": "Adresă de email invalidă",
+      "emailRequired": "Adresa de email este obligatorie",
+      "passwordRequired": "Parola este obligatorie"
+    },
+    "registrationSuccess": {
+      "title": "Înregistrare reușită!",
+      "message": "Îți mulțumim pentru crearea contului. Acum te poți conecta cu datele tale.",
+      "continue": "Continuă spre conectare"
     }
-    
   },
   "HomePage": {
     "title": "Advent Calendar"
+  },
+  "Header": {
+    "account": "Cont",
+    "profile": {
+      "title": "Profil",
+      "subtitle": "Gestionează-ți contul",
+      "name": "Nume",
+      "email": "Email",
+      "lastName": "Nume de familie",
+      "logout": "Deconectare"
+    }
   }
 }
