@@ -1,0 +1,66 @@
+{
+  "RegisterPage": {
+    "title": "Alătură-te! 🎄",
+    "subtitle": "Creează-ți contul",
+    "formFields": {
+      "firstName": "Prenume",
+      "lastName": "Nume",
+      "email": "Adresă de email",
+      "phoneNumber": "Număr de telefon",
+      "password": "Parolă",
+      "birthDate": "Data nașterii",
+      "marketingConsent": "Sunt de acord să primesc comunicări de marketing conform Termenilor și Condițiilor",
+      "termsLink": "Termeni și Condiții",
+      "consentRequired": "Trebuie să acceptați termenii și condițiile"
+    },
+    "validation": {
+      "nameMin": "Numele este prea scurt!",
+      "nameMax": "Numele este prea lung!",
+      "nameRequired": "Numele este obligatoriu",
+      "lastNameMin": "Numele de familie este prea scurt!",
+      "lastNameMax": "Numele de familie este prea lung!",
+      "lastNameRequired": "Numele de familie este obligatoriu",
+      "emailInvalid": "Adresă de email invalidă",
+      "emailRequired": "Adresa de email este obligatorie",
+      "phoneInvalid": "Număr de telefon invalid",
+      "phoneRequired": "Numărul de telefon este obligatoriu",
+      "passwordMin": "Parola trebuie să aibă cel puțin 8 caractere",
+      "passwordLetter": "Parola trebuie să conțină cel puțin o literă",
+      "passwordNumber": "Parola trebuie să conțină cel puțin o cifră",
+      "passwordRequired": "Parola este obligatorie",
+      "birthDateMin": "Nu puteți avea mai mult de 100 de ani",
+      "birthDateMax": "Trebuie să aveți cel puțin 5 ani",
+      "birthDateRequired": "Data nașterii este obligatorie"
+    },
+    "buttons": {
+      "register": "Înregistrare",
+      "registering": "Se înregistrează..."
+    },
+    "loginLink": "Ai deja cont? Conectează-te",
+    "errors": {
+      "registrationFailed": "Înregistrarea a eșuat",
+      "generalError": "A apărut o eroare în timpul înregistrării"
+    }
+  },
+  "LoginPage": {
+    "title": "Bine ai revenit!",
+    "subtitle": "Conectează-te la contul tău",
+    "formFields": {
+      "email": "Adresă de email",
+      "password": "Parolă"
+    },
+    "buttons": {
+      "login": "Conectare",
+      "loggingIn": "Se conectează..."
+    },
+    "registerLink": "Nu ai cont? Înregistrează-te",
+    "errors": {
+      "invalidCredentials": "Email sau parolă invalidă",
+      "generalError": "A apărut o eroare în timpul conectării"
+    }
+    
+  },
+  "HomePage": {
+    "title": "Advent Calendar"
+  }
+}
