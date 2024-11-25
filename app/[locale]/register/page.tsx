@@ -67,7 +67,7 @@ export default function Register({ params: { locale } }: { params: { locale: str
     <>
       <AuthHeader />
     
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-green-900 to-red-900 relative overflow-hidden p-4 sm:p-10">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#bce3de] to-[#faedcb] relative overflow-hidden p-4 sm:p-10">
       <Snowfall />
       
       <div className="max-w-md w-full space-y-8 p-4 sm:p-8 bg-white/90 backdrop-blur-sm rounded-lg shadow-2xl border border-white/20">
@@ -217,7 +217,7 @@ export default function Register({ params: { locale } }: { params: { locale: str
             <button
               type="submit"
               disabled={formik.isSubmitting}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-r from-red-600 to-green-600 hover:from-red-700 hover:to-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-300"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-r from-[#d04a53] to-[#bce3de] hover:from-[#d04a53] hover:to-[#bce3de] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-300"
             >
               {formik.isSubmitting ? t('buttons.registering') : t('buttons.register')}
             </button>
