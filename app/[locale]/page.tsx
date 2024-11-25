@@ -1,22 +1,26 @@
 'use client'
 
 import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useParams } from 'next/navigation'
 import { useEffect } from 'react'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import AdventCalendar from './components/AdventCalendar'
-import Snowfall from './components/Snowfall'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import AdventCalendar from '../components/AdventCalendar'
+import Snowfall from '../components/Snowfall'
+import { useTranslations } from 'next-intl'
 
 export default function Home() {
   const { data: session, status } = useSession()
   const router = useRouter()
+  const params = useParams()
+  const locale = params.locale as string
+  const t = useTranslations('HomePage')
 
   useEffect(() => {
     if (status === 'unauthenticated') {
-      router.push('/login')
+      router.push(`/${locale}/login`)
     }
-  }, [status, router])
+  }, [status, router, locale])
 
   if (status === 'loading') {
     return (
@@ -37,7 +41,7 @@ export default function Home() {
 
       <main className="flex-grow container mx-auto px-4 py-8 relative z-10">
         <h2 className="text-4xl font-bold text-center mb-8 text-white">
-          Christmas Advent Calendar 🎄
+          {t('title')}
         </h2>
         <AdventCalendar />
       </main>
