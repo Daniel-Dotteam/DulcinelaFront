@@ -82,5 +82,30 @@
       "lastName": "Фамилия",
       "logout": "Выйти"
     }
+  },
+  "Footer": {
+    "address": {
+      "street": "mun. Chisinau",
+      "city": "str. Albisoara 68",
+      "email1": "marketing@dulcinella.md",
+      "email2": "hr@dulcinella.md",
+      "email3": "director@dulcinella.md",
+      "email4": "vanzari@dulcinella.md",
+      "email5": "contabilitate@dulcinella.md"
+    },
+    "social": {
+      "title": "Присоединяйтесь к нам",
+      "instagram": "Instagram",
+      "facebook": "Facebook"
+    },
+    "legal": {
+      "title": "Юридическая информация",
+      "terms": "Условия использования",
+      "privacy": "Политика конфиденциальности"
+    },
+    "copyright": {
+      "rights": "© {year} Dulcinela. Все права защищены.",
+      "poweredBy": "При поддержке"
+    }
   }
 }

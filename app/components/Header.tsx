@@ -27,7 +27,7 @@ const Header = () => {
     }
 
     return (
-        <header className="bg-white text-black py-4 px-6 shadow-lg sticky top-0 z-50">
+        <header className="bg-[#e7f7f5] text-black py-4 px-6 shadow-lg sticky top-0 z-50">
             <div className="container mx-auto flex justify-center sm:justify-between items-center flex-col sm:flex-row">
                 <div className="flex items-center gap-4">
                     <Logo02 size={120} />
@@ -53,7 +53,7 @@ const Header = () => {
 
                     <button
                         onClick={() => setIsProfileOpen(!isProfileOpen)}
-                        className="shadow-lg flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors"
+                        className="shadow-lg flex items-center gap-2 px-4 py-2 rounded-lg bg-white/90 backdrop-blur-sm hover:bg-white/80 transition-colors"
                     >
                         <span>{t('account')}</span>
                         <svg

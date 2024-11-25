@@ -15,7 +15,7 @@ const AuthHeader = () => {
     }
 
     return (
-        <header className="shadow-lg" style={{ backgroundColor: `${colors.green.dark}20` }}>
+        <header className="shadow-lg bg-[#e7f7f5]">
             <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                 <div className="flex items-center">
                     <Logo02 size={120} />
