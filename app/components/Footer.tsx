@@ -83,7 +83,7 @@ const Footer = () => {
                             href="https://dotteam.md/" 
                             target='_blank'
                         >
-                            DotTeam
+                            DOT
                         </a>
                     </p>
                 </div>
